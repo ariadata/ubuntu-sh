@@ -60,5 +60,11 @@ docker run -d -p 9999:9000 --name=portainer --restart=always -v /var/run/docker.
 # install phpmyadmin
 # docker run --name phpmyadmin --restart=always -d -p 9998:80 -e PMA_HOST=host.docker.internal -e MYSQL_USERNAME=sail -e MYSQL_ROOT_PASSWORD=password phpmyadmin
 
+# install nginx-proxy-manager
+# Login : http://IP_ADDR:81
+# User  : admin@example.com
+# Pass  : changeme
+docker run -d -p 80:80 -p 443:443 -p 81:81 --name=nginx-proxy-manager --restart=unless-stopped -e DB_SQLITE_FILE=/data/database.sqlite -e DISABLE_IPV6=true -v /data:/data -v /letsencrypt:/etc/letsencrypt jc21/nginx-proxy-manager
+
 sudo apt --yes update && sudo apt -q --yes upgrade
 # sudo reboot
