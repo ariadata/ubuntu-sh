@@ -1,8 +1,7 @@
 #!/bin/sh
 set -e
-
-echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
-sed -i 's/#Port 22/Port 6070/g' /etc/ssh/sshd_config
+# su echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
+sudo sed -i 's/#Port 22/Port 6070/g' /etc/ssh/sshd_config
 sudo service ssh restart
 
 function get_latest_github_release_number() {
