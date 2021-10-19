@@ -13,7 +13,7 @@ sudo echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selecti
 sudo apt --yes install software-properties-common aria2 bzip2 ca-certificates curl git gnupg gosu htop iotop iperf libcap2-bin libpng-dev make gcc nano net-tools nmap chrony openssh-server openssl p7zip poppler-utils apt-transport-https lsb-release python2 sqlite3 supervisor traceroute unar unzip wget zip zsh
 
 sudo apt --yes install network-manager
-sudo curl -L "https://github.com/pcmehrdad/from-ubuntu-to-laravel-cicd/raw/main/files/NetworkManager.conf" -o /etc/NetworkManager/NetworkManager.conf
+sudo curl -L "https://github.com/ariadata/ubuntu-lemp/raw/main/files/NetworkManager.conf" -o /etc/NetworkManager/NetworkManager.conf
 sudo systemctl enable --now network-manager
 
 # php
