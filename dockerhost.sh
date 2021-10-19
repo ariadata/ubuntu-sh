@@ -12,9 +12,10 @@ function get_latest_github_release_number() {
 # sudo echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 sudo apt --yes install software-properties-common aria2 bzip2 ca-certificates curl git gnupg gosu htop iotop iperf libcap2-bin libpng-dev make gcc nano net-tools nmap chrony openssh-server openssl p7zip poppler-utils apt-transport-https lsb-release python2 sqlite3 supervisor traceroute unar unzip wget zip zsh
 
-# sudo apt --yes install network-manager
-# sudo curl -L "https://github.com/ariadata/ubuntu-lemp/raw/main/files/NetworkManager.conf" -o /etc/NetworkManager/NetworkManager.conf
-# sudo systemctl enable --now network-manager
+# nmtui
+sudo apt --yes install network-manager
+sudo curl -L "https://github.com/ariadata/ubuntu-lemp/raw/main/files/NetworkManager.conf" -o /etc/NetworkManager/NetworkManager.conf
+sudo systemctl enable --now network-manager
 
 
 # php
@@ -60,4 +61,4 @@ docker run -d -p 9999:9000 --name=portainer --restart=always -v /var/run/docker.
 # docker run --name phpmyadmin --restart=always -d -p 9998:80 -e PMA_HOST=host.docker.internal -e MYSQL_USERNAME=sail -e MYSQL_ROOT_PASSWORD=password phpmyadmin
 
 sudo apt --yes update && sudo apt -q --yes upgrade
-sudo reboot
+# sudo reboot
