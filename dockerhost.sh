@@ -1,19 +1,21 @@
 #!/bin/sh
 set -e
-# su echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
-sudo sed -i 's/#Port 22/Port 6070/g' /etc/ssh/sshd_config
-sudo service ssh restart
+
+# sudo echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
+# sudo sed -i 's/#Port 22/Port 6070/g' /etc/ssh/sshd_config
+# sudo service ssh restart
 
 function get_latest_github_release_number() {
 	curl --silent "https://api.github.com/repos/$1/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/'
 }
 
-sudo echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
+# sudo echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 sudo apt --yes install software-properties-common aria2 bzip2 ca-certificates curl git gnupg gosu htop iotop iperf libcap2-bin libpng-dev make gcc nano net-tools nmap chrony openssh-server openssl p7zip poppler-utils apt-transport-https lsb-release python2 sqlite3 supervisor traceroute unar unzip wget zip zsh
 
-sudo apt --yes install network-manager
-sudo curl -L "https://github.com/ariadata/ubuntu-lemp/raw/main/files/NetworkManager.conf" -o /etc/NetworkManager/NetworkManager.conf
-sudo systemctl enable --now network-manager
+# sudo apt --yes install network-manager
+# sudo curl -L "https://github.com/ariadata/ubuntu-lemp/raw/main/files/NetworkManager.conf" -o /etc/NetworkManager/NetworkManager.conf
+# sudo systemctl enable --now network-manager
+
 
 # php
 sudo add-apt-repository --yes ppa:ondrej/php
@@ -55,7 +57,7 @@ docker pull portainer/portainer-ce:latest
 docker run -d -p 9999:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce
 
 # install phpmyadmin
-docker run --name phpmyadmin --restart=always -d -p 9998:80 -e PMA_HOST=host.docker.internal -e MYSQL_USERNAME=sail -e MYSQL_ROOT_PASSWORD=password phpmyadmin
+# docker run --name phpmyadmin --restart=always -d -p 9998:80 -e PMA_HOST=host.docker.internal -e MYSQL_USERNAME=sail -e MYSQL_ROOT_PASSWORD=password phpmyadmin
 
 sudo apt --yes update && sudo apt -q --yes upgrade
 sudo reboot
