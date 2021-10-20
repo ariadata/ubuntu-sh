@@ -16,7 +16,7 @@ read -e -p $'Change System TimeZone ? : ' -i "Asia/Tehran" system_default_timezo
 sudo timedatectl set-timezone $system_default_timezone
 
 
-read -e -p $'Folder name for domain(s) ? : \n' -i "test.com" domain_folder_name
+read -e -p $'Folder name for domain(s) ? : ' -i "test.com" domain_folder_name
 read -e -p $'Enter domains FQDN (seperated by space , exp: test.com www.test.com ) : \n' www_domains
 read -e -p $'Select PHP Version [7.4|8.0]: ' -i "8.0" php_version
 read -e -p $'Install Composer [y/n]: ' -i "y" if_install_composer
@@ -63,6 +63,7 @@ then
 	mkdir -p pma
 	curl -L "https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-english.tar.gz" -o pma.tgz
 	tar -xzf pma.tgz -C pma --strip-components=1
+	rm -f pma.tgz
 	# copy config
 fi
 
@@ -102,7 +103,7 @@ y
 EOF
 
 # install nginx + configuration (nginx+phpfpm)
-
+sudo apt --yes install nginx
 
 
 sudo apt --yes update && sudo apt -q --yes upgrade
