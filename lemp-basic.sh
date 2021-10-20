@@ -122,6 +122,8 @@ sudo curl -L "https://github.com/ariadata/ubuntu-sh/raw/master/files/nginx-defau
 sudo curl -L "https://github.com/ariadata/ubuntu-sh/raw/master/files/mysql-custom-config.cnf" -o /etc/mysql/conf.d/custom.cnf
 
 ## create user mariadb-mysql
+mysql -u root -p${database_root_password} -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' IDENTIFIED BY '$database_root_password' WITH GRANT OPTION;FLUSH PRIVILEGES;"
+
 ## 
 
 
