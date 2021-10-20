@@ -5,7 +5,7 @@ if [[ $EUID = 0 ]]; then
 	echo "Please run this script as non-root sudo user"
 	exit 1
 fi
-sudo
+
 # via root user
 # echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 # service ssh restart
@@ -18,6 +18,9 @@ function get_latest_github_release_number() {
 read -e -p $'Set/Change SSH port : ' -i "22" ssh_port_number
 sudo sed -i 's/#Port 22/Port '$ssh_port_number'/g' /etc/ssh/sshd_config
 sudo service ssh restart
+
+read -e -p $'Change System TimeZone ? : ' -i "Asia/Tehran" system_default_timezone
+sudo timedatectl set-timezone $system_default_timezone
 
 # extra dns servers , shecan : 185.51.200.2,178.22.122.100  | begzar : 185.55.226.26,185.55.225.25
 read -e -p $'Add extra nameservers [y/n]? : ' -i "n" if_set_extra_dns_servers
