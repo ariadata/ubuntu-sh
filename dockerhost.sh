@@ -22,6 +22,9 @@ sudo service ssh restart
 read -e -p $'Change System TimeZone ? : ' -i "Asia/Tehran" system_default_timezone
 sudo timedatectl set-timezone $system_default_timezone
 
+# add dockerhub.ir registery
+read -e -p $'Add dockerhub.ir mirror to docker registery [y/n]? : ' -i "n" if_dockerhub_ir_registery_add
+
 # extra dns servers , shecan : 185.51.200.2,178.22.122.100  | begzar : 185.55.226.26,185.55.225.25
 read -e -p $'Add extra nameservers [y/n]? : ' -i "n" if_set_extra_dns_servers
 if [[ $if_set_extra_dns_servers =~ ^([Yy])$ ]]
@@ -95,6 +98,13 @@ sudo chmod 666 /var/run/docker.sock
 sudo systemctl enable --now docker
 ## set docker proxy here ???????????????????
 ############################################
+
+## install dockerhub.ir registery mirror file
+if [[ $if_dockerhub_ir_registery_add =~ ^([Yy])$ ]]
+then
+	sudo curl -L "https://github.com/ariadata/ubuntu-sh/raw/master/files/docker-mirror-daemon.json" -o /etc/docker/daemon.json
+	sudo systemctl restart docker
+fi
 
 ## Install portainer
 if [[ $if_install_portainer =~ ^([Yy])$ ]]
