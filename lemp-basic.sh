@@ -120,7 +120,7 @@ sudo sed -i 's/##php_version##/'$php_version'/g' /etc/nginx/sites-available/$dom
 sudo curl -L "https://github.com/ariadata/ubuntu-sh/raw/master/files/nginx-default-template.conf" -o /etc/nginx/sites-available/default
 
 ## mysql+mariadb conf
-
+## create user mariadb-mysql
 ## 
 
 
