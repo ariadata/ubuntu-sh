@@ -89,6 +89,10 @@ else
 fi
 
 ## change mysql-mariadb root password
+
+
+if [[ $if_change_db_to_mariadb =~ ^([Yy])$ ]]
+then
 sudo mysql_secure_installation <<EOF
 
 y
@@ -100,6 +104,18 @@ y
 y
 y
 EOF
+else
+sudo mysql_secure_installation <<EOF
+
+n
+$database_root_password
+$database_root_password
+y
+y
+y
+y
+EOF
+fi
 
 # install nginx + configuration (nginx+phpfpm)
 ## php-fpm config
