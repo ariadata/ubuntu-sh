@@ -40,7 +40,7 @@ sudo systemctl enable --now docker
 
 sudo apt --yes update && sudo apt -q --yes upgrade
 
-# laravel + larave-new
+# laravel + larave-new command in bash
 composer global require laravel/installer --update-with-all-dependencies
 echo 'export PATH="$HOME/.config/composer/vendor/bin:$PATH"' >> ~/.bashrc
 # source ~/.bashrc
