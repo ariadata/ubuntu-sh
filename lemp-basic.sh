@@ -103,7 +103,19 @@ y
 EOF
 
 # install nginx + configuration (nginx+phpfpm)
+## php-fpm config
 sudo apt --yes install nginx
+mv /etc/php/$php_version/fpm/pool.d/www.conf /etc/php/$php_version/fpm/pool.d/www.conf.bak
+curl -L "https://github.com/ariadata/ubuntu-sh/raw/master/files/php-fpm-$php_version-www-template.conf" -o /etc/php/$php_version/fpm/pool.d/www.conf
+sudo sed -i 's/ubuntu/'$USER'/g' /etc/php/$php_version/fpm/pool.d/www.conf
+
+## nginx config
+
+
+
+## mysql+mariadb conf
+
+## 
 
 
 sudo apt --yes update && sudo apt -q --yes upgrade
