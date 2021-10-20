@@ -117,6 +117,8 @@ sudo sed -i 's/##folder_path##/\/home\/'$USER'\/www\/'$domain_folder_name'/g' /e
 sudo sed -i 's/##php_version##/'$php_version'/g' /etc/nginx/sites-available/$domain_folder_name
 
 ## nginx change default 
+sudo curl -L "https://github.com/ariadata/ubuntu-sh/raw/master/files/nginx-default-template.conf" -o /etc/nginx/sites-available/default
+
 ## mysql+mariadb conf
 
 ## 
