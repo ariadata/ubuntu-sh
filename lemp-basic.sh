@@ -31,7 +31,6 @@ fi
 
 read -e -p $'Install Redis ? : ' -i "y" if_install_redis
 #############################################################################
-
 sudo apt --yes install software-properties-common aria2 bzip2 ca-certificates curl git gnupg gosu htop iotop iperf libcap2-bin libpng-dev make gcc nano net-tools nmap chrony openssh-server openssl p7zip poppler-utils apt-transport-https lsb-release python2 sqlite3 supervisor traceroute unar unzip wget zip zsh
 
 cd ~
