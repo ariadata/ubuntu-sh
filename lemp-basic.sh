@@ -20,7 +20,7 @@ read -e -p $'Folder name for domain(s) ? : ' -i "test.com" domain_folder_name
 read -e -p $'Enter domains FQDN (seperated by space , exp: test.com www.test.com ) : \n' www_domains
 read -e -p $'Select PHP Version [7.4|8.0]: ' -i "8.0" php_version
 read -e -p $'Install Composer [y/n]: ' -i "y" if_install_composer
-read -e -p $'DataBase is MySQL8 / Change it to MariaDb ? : ' -i "y" if_change_db_to_mariadb
+read -e -p $'DataBase is MySQL8 / Change it to MariaDb-10.6 ? : ' -i "y" if_change_db_to_mariadb
 read -e -p $'Enter DataBase root password: \n' database_root_password
 
 read -e -p $'Install PHPMyAdmin on pma folder ? : ' -i "y" if_install_pma
@@ -119,6 +119,7 @@ sudo sed -i 's/##php_version##/'$php_version'/g' /etc/nginx/sites-available/$dom
 sudo curl -L "https://github.com/ariadata/ubuntu-sh/raw/master/files/nginx-default-template.conf" -o /etc/nginx/sites-available/default
 
 ## mysql+mariadb conf
+
 ## create user mariadb-mysql
 ## 
 
