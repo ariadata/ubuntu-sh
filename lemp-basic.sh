@@ -111,18 +111,18 @@ sudo sed -i 's/ubuntu/'$USER'/g' /etc/php/$php_version/fpm/pool.d/www.conf
 ## nginx config for domains
 sudo curl -L "https://github.com/ariadata/ubuntu-sh/raw/master/files/nginx-basic-template.conf" -o /etc/nginx/sites-available/$domain_folder_name
 sudo ln -s /etc/nginx/sites-available/$domain_folder_name /etc/nginx/sites-enabled/$domain_folder_name
-sudo sed -i 's/##domain_name##/'$www_domains'/g' /etc/nginx/sites-available/$domain_folder_name
-sudo sed -i 's/##folder_path##/\/home\/'$USER'\/www\/'$domain_folder_name'/g' /etc/nginx/sites-available/$domain_folder_name
-sudo sed -i 's/##php_version##/'$php_version'/g' /etc/nginx/sites-available/$domain_folder_name
+sudo sed -i "s/##domain_name##/$www_domains/g" /etc/nginx/sites-available/$domain_folder_name
+sudo sed -i "s/##folder_path##/\/home\/$USER\/www\/$domain_folder_name/g" /etc/nginx/sites-available/$domain_folder_name
+sudo sed -i "s/##php_version##/$php_version/g" /etc/nginx/sites-available/$domain_folder_name
 
 ## nginx config for pma
 if [[ $if_install_pma =~ ^([Yy])$ ]]
 then
 	sudo curl -L "https://github.com/ariadata/ubuntu-sh/raw/master/files/nginx-basic-template.conf" -o /etc/nginx/sites-available/phpmyadmin
 	sudo ln -s /etc/nginx/sites-available/phpmyadmin /etc/nginx/sites-enabled/phpmyadmin
-	sudo sed -i 's/##domain_name##/'$pma_fqdn'/g' /etc/nginx/sites-available/phpmyadmin
-	sudo sed -i 's/##folder_path##/\/home\/'$USER'\/www\/pma/g' /etc/nginx/sites-available/phpmyadmin
-	sudo sed -i 's/##php_version##/'$php_version'/g' /etc/nginx/sites-available/phpmyadmin
+	sudo sed -i "s/##domain_name##/$pma_fqdn/g" /etc/nginx/sites-available/phpmyadmin
+	sudo sed -i "s/##folder_path##/\/home\/$USER\/www\/pma/g" /etc/nginx/sites-available/phpmyadmin
+	sudo sed -i "s/##php_version##/$php_version/g" /etc/nginx/sites-available/phpmyadmin
 fi
 
 ## nginx change default 
