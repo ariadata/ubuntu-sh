@@ -20,7 +20,7 @@ read -e -p $'Folder name for domain(s) ? : ' -i "test.com" domain_folder_name
 read -e -p $'Enter domains FQDN (seperated by space , exp: test.com www.test.com ) : \n' www_domains
 read -e -p $'Select PHP Version [7.4|8.0]: ' -i "8.0" php_version
 read -e -p $'Install Composer [y/n]: ' -i "y" if_install_composer
-read -e -p $'DataBase is MySQL8 / Change it to MariaDb-10.6 ? : ' -i "y" if_change_db_to_mariadb
+read -e -p $'DataBase is MySQL8 / Change it to MariaDb-10.6 ? : ' -i "n" if_change_db_to_mariadb
 read -e -p $'Enter DataBase root password: \n' database_root_password
 
 read -e -p $'Install PHPMyAdmin on pma folder ? : ' -i "y" if_install_pma
@@ -104,16 +104,26 @@ EOF
 # install nginx + configuration (nginx+phpfpm)
 ## php-fpm config
 sudo apt --yes install nginx
-mv /etc/php/$php_version/fpm/pool.d/www.conf /etc/php/$php_version/fpm/pool.d/www.conf.bak
+sudo mv /etc/php/$php_version/fpm/pool.d/www.conf /etc/php/$php_version/fpm/pool.d/www.conf.bak
 sudo curl -L "https://github.com/ariadata/ubuntu-sh/raw/master/files/php-fpm-$php_version-www-template.conf" -o /etc/php/$php_version/fpm/pool.d/www.conf
 sudo sed -i 's/ubuntu/'$USER'/g' /etc/php/$php_version/fpm/pool.d/www.conf
 
-## nginx config
+## nginx config for domains
 sudo curl -L "https://github.com/ariadata/ubuntu-sh/raw/master/files/nginx-basic-template.conf" -o /etc/nginx/sites-available/$domain_folder_name
 sudo ln -s /etc/nginx/sites-available/$domain_folder_name /etc/nginx/sites-enabled/$domain_folder_name
 sudo sed -i 's/##domain_name##/'$www_domains'/g' /etc/nginx/sites-available/$domain_folder_name
 sudo sed -i 's/##folder_path##/\/home\/'$USER'\/www\/'$domain_folder_name'/g' /etc/nginx/sites-available/$domain_folder_name
 sudo sed -i 's/##php_version##/'$php_version'/g' /etc/nginx/sites-available/$domain_folder_name
+
+## nginx config for pma
+if [[ $if_install_pma =~ ^([Yy])$ ]]
+then
+	sudo curl -L "https://github.com/ariadata/ubuntu-sh/raw/master/files/nginx-basic-template.conf" -o /etc/nginx/sites-available/phpmyadmin
+	sudo ln -s /etc/nginx/sites-available/phpmyadmin /etc/nginx/sites-enabled/phpmyadmin
+	sudo sed -i 's/##domain_name##/'$pma_fqdn'/g' /etc/nginx/sites-available/phpmyadmin
+	sudo sed -i 's/##folder_path##/\/home\/'$USER'\/www\/pma/g' /etc/nginx/sites-available/phpmyadmin
+	sudo sed -i 's/##php_version##/'$php_version'/g' /etc/nginx/sites-available/phpmyadmin
+fi
 
 ## nginx change default 
 sudo curl -L "https://github.com/ariadata/ubuntu-sh/raw/master/files/nginx-default-template.conf" -o /etc/nginx/sites-available/default
@@ -122,11 +132,9 @@ sudo curl -L "https://github.com/ariadata/ubuntu-sh/raw/master/files/nginx-defau
 sudo curl -L "https://github.com/ariadata/ubuntu-sh/raw/master/files/mysql-custom-config.cnf" -o /etc/mysql/conf.d/custom.cnf
 
 ## create user mariadb-mysql
-mysql -u root -p${database_root_password} -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' IDENTIFIED BY '$database_root_password' WITH GRANT OPTION;FLUSH PRIVILEGES;"
+sudo mysql -u root -p${database_root_password} -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' IDENTIFIED BY '$database_root_password' WITH GRANT OPTION;FLUSH PRIVILEGES;"
 
 ## 
-
-
 sudo apt --yes update && sudo apt -q --yes upgrade
 sudo apt --yes autoremove
 clear
