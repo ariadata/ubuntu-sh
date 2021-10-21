@@ -1,3 +1,2 @@
-docker proxy
-docker registery-mirror
-set updator cron
+set updator cron for dockerhost
+install ssl certs for lemp
