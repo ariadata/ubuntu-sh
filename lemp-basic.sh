@@ -119,7 +119,7 @@ sudo curl -L "https://github.com/ariadata/ubuntu-sh/raw/master/files/php-fpm-$ph
 sudo sed -i 's/ubuntu/'$USER'/g' /etc/php/$php_version/fpm/pool.d/www.conf
 
 ## default page for site
-sudo curl -L "https://github.com/ariadata/ubuntu-sh/raw/master/files/under_cunstruction.html" -o /home/$USER/www/$domain_folder_name/index.html
+curl -L "https://github.com/ariadata/ubuntu-sh/raw/master/files/under_cunstruction.html" -o /home/$USER/www/$domain_folder_name/index.html
 
 ## nginx config for domains
 sudo curl -L "https://github.com/ariadata/ubuntu-sh/raw/master/files/nginx-basic-template.conf" -o /etc/nginx/sites-available/$domain_folder_name
