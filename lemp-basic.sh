@@ -5,7 +5,9 @@ if [[ $EUID = 0 ]]; then
 	echo "Please run this script as non-root sudo user"
 	exit 1
 fi
+
 sudo service ssh restart
+
 # Set SSH Port
 read -e -p $'Set/Change SSH port : ' -i "22" ssh_port_number
 sudo sed -i 's/#Port 22/Port '$ssh_port_number'/g' /etc/ssh/sshd_config
@@ -14,7 +16,6 @@ sudo service ssh restart
 # Change System timezone
 read -e -p $'Change System TimeZone ? : ' -i "Asia/Tehran" system_default_timezone
 sudo timedatectl set-timezone $system_default_timezone
-
 
 read -e -p $'Folder name for domain(s) ? : ' -i "test" domain_folder_name
 read -e -p $'Enter domains FQDN (seperated by space , exp: test.com www.test.com ) : \n' www_domains
