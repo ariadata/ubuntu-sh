@@ -1,6 +1,8 @@
 [![Build Status](https://files.ariadata.co/file/ariadata_logo.png)](https://ariadata.co)
 
 > After Installing , use `sudo reboot` to restart your system
+
+[Download Ubuntu Server 20.04 LTS ](https://releases.ubuntu.com/20.04/ubuntu-20.04.3-live-server-amd64.iso)
 ---
 #### Install DockerHost :
 ```sh
