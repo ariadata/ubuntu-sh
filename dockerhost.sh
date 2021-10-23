@@ -5,6 +5,7 @@ if [[ $EUID = 0 ]]; then
 	echo "Please run this script as non-root sudo user"
 	exit 1
 fi
+
 sudo service ssh restart
 # via root user
 # echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
