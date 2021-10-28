@@ -20,6 +20,7 @@ sudo timedatectl set-timezone $system_default_timezone
 read -e -p $'Folder name for domain(s) ? : ' -i "test" domain_folder_name
 read -e -p $'Enter domains FQDN (seperated by space , exp: test.com www.test.com ) : \n' www_domains
 read -e -p $'Select PHP Version [7.4|8.0]: ' -i "8.0" php_version
+read -e -p $'Install PHP-xDebug: ' -i "n" if_install_php_xdebug
 read -e -p $'Install Composer [y/n]: ' -i "y" if_install_composer
 read -e -p $'DataBase is MySQL8 / Change it to MariaDb-10.6 ? : ' -i "n" if_change_db_to_mariadb
 read -e -p $'Enter DataBase root password: \n' database_root_password
@@ -47,9 +48,17 @@ if [[ $php_version = "8.0" ]]
 then
 	# install with 8.0
 	sudo apt --yes install php8.0-cli php8.0-fpm php8.0-dev php8.0-pgsql php8.0-sqlite3 php8.0-gd php8.0-curl php8.0-memcached php8.0-imap php8.0-mysql php8.0-mbstring php8.0-xml php8.0-zip php8.0-bcmath php8.0-soap php8.0-intl php8.0-readline php8.0-pcov php8.0-msgpack php8.0-igbinary php8.0-ldap php8.0-redis php8.0-swoole php8.0-apcu php8.0-opcache
+	if [[ $if_install_php_xdebug =~ ^([Yy])$ ]]
+	then
+		sudo apt --yes install php8.0-xdebug
+	fi
 else
 	# install with 7.4
 	sudo apt --yes install php7.4-cli php7.4-fpm php7.4-dev php7.4-pgsql php7.4-sqlite3 php7.4-gd php7.4-curl php7.4-memcached php7.4-imap php7.4-mysql php7.4-mbstring php7.4-xml php7.4-zip php7.4-bcmath php7.4-soap php7.4-intl php7.4-readline php7.4-pcov php7.4-msgpack php7.4-igbinary php7.4-ldap php7.4-redis php7.4-swoole php7.4-apcu php7.4-opcache
+	if [[ $if_install_php_xdebug =~ ^([Yy])$ ]]
+	then
+		sudo apt --yes install php7.4-xdebug
+	fi
 fi
 
 # install composer
