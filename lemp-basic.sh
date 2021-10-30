@@ -84,6 +84,7 @@ then
 	sudo add-apt-repository --yes ppa:redislabs/redis
 	sudo apt --yes update
 	sudo apt --yes install redis
+	sudo systemctl enable --now redis-server
 fi
 
 # Install MySQL Server based on selection
