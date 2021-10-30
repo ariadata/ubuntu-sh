@@ -1,5 +1,3 @@
 set updator cron for dockerhost
-
 install ssl certs for lemp
-
 https://github.com/wpsnappy/superfast-lemp-wp
