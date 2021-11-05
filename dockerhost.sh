@@ -21,7 +21,7 @@ sudo sed -i 's/#Port 22/Port '$ssh_port_number'/g' /etc/ssh/sshd_config
 sudo service ssh restart
 
 # Change System timezone
-read -e -p $'Change System TimeZone ? : ' -i "Asia/Tehran" system_default_timezone
+read -e -p $'Change System TimeZone ? [Default is UTC]: ' -i "Asia/Tehran" system_default_timezone
 sudo timedatectl set-timezone $system_default_timezone
 
 # add dockerhub.ir registery
