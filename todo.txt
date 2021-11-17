@@ -3,6 +3,7 @@ install ssl certs for lemp
 https://github.com/wpsnappy/superfast-lemp-wp
 add higher nginx version from It's repo
 cron for update auto
+install pip + python
 complete larasail
 python + use larasail
 pip
