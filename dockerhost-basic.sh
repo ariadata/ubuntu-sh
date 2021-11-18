@@ -6,6 +6,9 @@ if [[ $EUID = 0 ]]; then
 	exit 1
 fi
 
+sudo apt --yes update && sudo apt -q --yes upgrade
+sudo apt --yes autoremove
+
 sudo service ssh restart
 # via root user
 # echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
