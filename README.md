@@ -6,7 +6,7 @@
 ---
 #### Install DockerHost Basic :
 ```sh
-cd ~ && curl -o dockerhost.sh -L https://raw.githubusercontent.com/ariadata/ubuntu-sh/master/dockerhost-basic.sh && bash dockerhost-basic.sh
+cd ~ && curl -o dockerhost-basic.sh -L https://raw.githubusercontent.com/ariadata/ubuntu-sh/master/dockerhost-basic.sh && bash dockerhost-basic.sh
 ```
 #### Install DockerHost :
 ```sh
