@@ -6,9 +6,6 @@ if [[ $EUID = 0 ]]; then
 	exit 1
 fi
 
-sudo apt --yes update && sudo apt -q --yes upgrade
-sudo apt --yes autoremove
-
 sudo service ssh restart
 # via root user
 # echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
@@ -64,7 +61,7 @@ then
 	read -e -p $'Version [7.4|8.0]: ' -i "8.0" php_cli_version
 fi
 
-
+sudo apt --yes update && sudo apt -q --yes upgrade
 # sudo echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 sudo apt --yes install software-properties-common aria2 bzip2 ca-certificates curl git gnupg gosu htop iotop iperf libcap2-bin libpng-dev make gcc nano net-tools nmap chrony openssh-server openssl p7zip poppler-utils apt-transport-https lsb-release python2 sqlite3 supervisor traceroute unar unzip wget zip zsh
 
@@ -102,7 +99,7 @@ then
 fi
 
 # Install Nginx-Proxy-Manager
-# Login : http://IP_ADDR:81
+# Login : http://IP_ADDR:8181
 # User  : admin@example.com
 # Pass  : changeme
 if [[ $if_install_nginx_proxy_manager =~ ^([Yy])$ ]]
