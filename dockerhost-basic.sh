@@ -7,6 +7,14 @@ if [[ $EUID = 0 ]]; then
 fi
 
 sudo service ssh restart
+
+# Update System First
+read -e -p $'Update && Upgrade System first [y/n]? : ' -i "y" if_update_first
+if [[ $if_update_first =~ ^([Yy])$ ]]
+then
+	sudo apt --yes update && sudo apt -q --yes upgrade
+fi
+
 # via root user
 # echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 # service ssh restart
@@ -61,7 +69,6 @@ then
 	read -e -p $'Version [7.4|8.0]: ' -i "8.0" php_cli_version
 fi
 
-sudo apt --yes update && sudo apt -q --yes upgrade
 # sudo echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 sudo apt --yes install software-properties-common aria2 bzip2 ca-certificates curl git gnupg gosu htop iotop iperf libcap2-bin libpng-dev make gcc nano net-tools nmap chrony openssh-server openssl p7zip poppler-utils apt-transport-https lsb-release python2 sqlite3 supervisor traceroute unar unzip wget zip zsh
 

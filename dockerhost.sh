@@ -7,6 +7,14 @@ if [[ $EUID = 0 ]]; then
 fi
 
 sudo service ssh restart
+
+# Update System First
+read -e -p $'Update && Upgrade System first [y/n]? : ' -i "y" if_update_first
+if [[ $if_update_first =~ ^([Yy])$ ]]
+then
+	sudo apt --yes update && sudo apt -q --yes upgrade
+fi
+
 # via root user
 # echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 # service ssh restart
