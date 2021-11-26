@@ -4,6 +4,8 @@ https://github.com/wpsnappy/superfast-lemp-wp
 add higher nginx version from It's repo
 cron for update auto
 install pip + python
+install mongo client for php
 complete larasail
+
 python + use larasail
 pip
