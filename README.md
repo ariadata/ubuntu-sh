@@ -5,12 +5,19 @@
 [Download Ubuntu Server 20.04 LTS ](https://releases.ubuntu.com/20.04/ubuntu-20.04.3-live-server-amd64.iso)
 ---
 #### Install DockerHost Basic :
+## dockerhost + portainer
 ```sh
 cd ~ && curl -o dockerhost-basic.sh -L https://raw.githubusercontent.com/ariadata/ubuntu-sh/master/dockerhost-basic.sh && bash dockerhost-basic.sh
 ```
-#### Install DockerHost :
+#### Install DockerHost Normal :
+## dockerhost + portainer + nginxproxymanager + composer
 ```sh
-cd ~ && curl -o dockerhost.sh -L https://raw.githubusercontent.com/ariadata/ubuntu-sh/master/dockerhost.sh && bash dockerhost.sh
+cd ~ && curl -o dockerhost-normal.sh -L https://raw.githubusercontent.com/ariadata/ubuntu-sh/master/dockerhost-normal.sh && bash dockerhost-normal.sh
+```
+#### Install DockerHost Full :
+## full
+```sh
+cd ~ && curl -o dockerhost-full.sh -L https://raw.githubusercontent.com/ariadata/ubuntu-sh/master/dockerhost-full.sh && bash dockerhost-full.sh
 ```
 #### Install LEMP :
 ```sh
