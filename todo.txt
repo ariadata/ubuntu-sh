@@ -5,7 +5,6 @@ add higher nginx version from It's repo
 cron for update auto
 install pip + python
 install mongo client for php
-
 php8.1
 complete larasail
 python + use larasail
