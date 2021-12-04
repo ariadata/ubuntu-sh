@@ -26,7 +26,7 @@ read -e -p $'Add dockerhub.ir mirror to docker registery [y/n]? : ' -i "n" if_do
 read -e -p $'Add extra nameservers [y/n]? : ' -i "n" if_set_extra_dns_servers
 if [[ $if_set_extra_dns_servers =~ ^([Yy])$ ]]
 then
-	read -e -p $'Enter NS IPs seperated by ","  sample of shecan is default:\n' -i "185.51.200.2,178.22.122.100" new_name_servers
+	read -e -p $'Enter NS IPs seperated by ","  sample of shecan.com:\n' -i "185.51.200.2,178.22.122.100" new_name_servers
 	IFS=',' read -r -a ns_arr <<< "$new_name_servers"
 	for element in "${ns_arr[@]}"
 	do

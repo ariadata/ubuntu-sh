@@ -10,7 +10,7 @@
 cd ~ && curl -o dockerhost-basic.sh -L https://raw.githubusercontent.com/ariadata/ubuntu-sh/master/dockerhost-basic.sh && bash dockerhost-basic.sh
 ```
 ### Install DockerHost Normal :
-#### dockerhost + portainer + nginxproxymanager + composer
+#### dockerhost + portainer + nginxproxymanager + php-cli + composer
 ```sh
 cd ~ && curl -o dockerhost-normal.sh -L https://raw.githubusercontent.com/ariadata/ubuntu-sh/master/dockerhost-normal.sh && bash dockerhost-normal.sh
 ```
