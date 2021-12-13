@@ -6,7 +6,6 @@ cron for update auto
 install pip + python3
 install mongo client for php
 php8.1
-
 complete larasail
 python + use larasail
 pip
