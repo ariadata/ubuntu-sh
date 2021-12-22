@@ -12,7 +12,7 @@
 ### Install DockerHost Basic :
 #### dockerhost + portainer
 ```sh
-bash <(curl -sSL https://git.io/JDM9J)
+cd ~ && curl -o dockerhost-basic.sh -L https://raw.githubusercontent.com/ariadata/ubuntu-sh/master/dockerhost-basic.sh && bash dockerhost-basic.sh
 ```
 ### Install DockerHost Normal :
 #### dockerhost + portainer + nginxproxymanager + php-cli + composer
