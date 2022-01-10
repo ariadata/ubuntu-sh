@@ -12,18 +12,25 @@
 ### Install DockerHost Basic :
 #### dockerhost + portainer
 ```sh
+bash <(curl -sSL https://git.io/JDM9J)
+```
+or :
+```sh
 cd ~ && curl -o dockerhost-basic.sh -L https://raw.githubusercontent.com/ariadata/ubuntu-sh/master/dockerhost-basic.sh && bash dockerhost-basic.sh
 ```
+---
 ### Install DockerHost Normal :
 #### dockerhost + portainer + nginxproxymanager + php-cli + composer
 ```sh
 cd ~ && curl -o dockerhost-normal.sh -L https://raw.githubusercontent.com/ariadata/ubuntu-sh/master/dockerhost-normal.sh && bash dockerhost-normal.sh
 ```
+---
 ### Install DockerHost Full :
 #### full
 ```sh
 cd ~ && curl -o dockerhost-full.sh -L https://raw.githubusercontent.com/ariadata/ubuntu-sh/master/dockerhost-full.sh && bash dockerhost-full.sh
 ```
+---
 ### Install LEMP :
 ```sh
 cd ~ && curl -o lemp-basic.sh -L https://raw.githubusercontent.com/ariadata/ubuntu-sh/master/lemp-basic.sh && bash lemp-basic.sh
