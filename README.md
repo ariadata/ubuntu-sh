@@ -16,7 +16,7 @@ bash <(curl -sSL https://git.io/JDM9J)
 ```
 or :
 ```sh
-cd ~ && curl -o dockerhost-basic.sh -L https://raw.githubusercontent.com/ariadata/ubuntu-sh/master/dockerhost-basic.sh && bash dockerhost-basic.sh
+bash <(curl -sSL https://raw.githubusercontent.com/ariadata/ubuntu-sh/master/dockerhost-basic.sh)
 ```
 ---
 ### Install DockerHost Normal :
