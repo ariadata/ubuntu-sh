@@ -6,6 +6,10 @@ if [[ $EUID = 0 ]]; then
 	exit 1
 fi
 
+function get_latest_github_release_number() {
+	curl --silent "https://api.github.com/repos/$1/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/'
+}
+
 # Update System First
 read -e -p $'Update && Upgrade System first [y/n]? : ' -i "y" if_update_first
 # Install Portainer
@@ -27,7 +31,11 @@ sudo systemctl enable --now cron
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt --yes update
-sudo apt --yes install docker-ce docker-ce-cli containerd.io docker-compose
+
+docker_compose_latest_version="$(get_latest_github_release_number docker/compose)"
+sudo curl -L "https://github.com/docker/compose/releases/download/$docker_compose_latest_version/docker-compose-$(uname -s)-$(uname -m)" -o /usr/bin/docker-compose
+
+sudo apt --yes install docker-ce docker-ce-cli containerd.io
 sudo usermod -aG docker $USER
 sudo chmod 666 /var/run/docker.sock
 sudo systemctl enable --now docker
