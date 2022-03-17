@@ -24,7 +24,7 @@ then
 	sudo apt --yes update && sudo apt -q --yes upgrade
 fi
 # sudo echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
-sudo apt --yes install wget curl git nano lsb-release sqlite3 p7zip apt-transport-https ca-certificates software-properties-common cron
+sudo apt --yes install wget curl git nano lsb-release sqlite3 p7zip gnupg-agent apt-transport-https ca-certificates software-properties-common cron
 sudo systemctl enable --now cron
 
 ## docker + docker-compose
