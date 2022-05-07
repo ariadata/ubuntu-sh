@@ -20,14 +20,14 @@ then
 	read -e -p $'Set Portainer External Port : ' -i "9999" portainer_external_port
 fi
 
+# Change System timezone
+read -e -p $'Change System TimeZone ? [Default is UTC]: ' -i "Asia/Tehran" system_default_timezone
+sudo timedatectl set-timezone $system_default_timezone
+
 if [[ $if_update_first =~ ^([Yy])$ ]]
 then
 	sudo apt --yes update && sudo apt -q --yes upgrade
 fi
-
-# Change System timezone
-read -e -p $'Change System TimeZone ? [Default is UTC]: ' -i "Asia/Tehran" system_default_timezone
-sudo timedatectl set-timezone $system_default_timezone
 
 # sudo echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 sudo apt --yes install wget curl git nano lsb-release sqlite3 p7zip gnupg-agent apt-transport-https ca-certificates software-properties-common cron
