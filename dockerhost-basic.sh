@@ -12,6 +12,11 @@ function get_latest_github_release_number() {
 
 # Update System First
 read -e -p $'Update && Upgrade System first [y/n]? : ' -i "y" if_update_first
+
+# Change System timezone
+read -e -p $'Change System TimeZone ? [Default is UTC]: ' -i "Asia/Tehran" system_default_timezone
+sudo timedatectl set-timezone $system_default_timezone
+
 # Install Portainer
 read -e -p $'Install Portainer [y/n]? : ' -i "n" if_install_portainer
 if [[ $if_install_portainer =~ ^([Yy])$ ]]
@@ -23,6 +28,7 @@ if [[ $if_update_first =~ ^([Yy])$ ]]
 then
 	sudo apt --yes update && sudo apt -q --yes upgrade
 fi
+
 # sudo echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 sudo apt --yes install wget curl git nano lsb-release sqlite3 p7zip gnupg-agent apt-transport-https ca-certificates software-properties-common cron
 sudo systemctl enable --now cron
