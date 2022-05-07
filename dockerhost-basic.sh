@@ -21,7 +21,7 @@ then
 fi
 
 # Change System timezone
-read -e -p $'Change System TimeZone ? [Default is UTC]: ' -i "Asia/Tehran" system_default_timezone
+read -e -p $'Set Default System Timezone : ' -i "Asia/Tehran" system_default_timezone
 sudo timedatectl set-timezone $system_default_timezone
 
 if [[ $if_update_first =~ ^([Yy])$ ]]
