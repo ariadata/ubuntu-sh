@@ -10,13 +10,14 @@
 [Download Ubuntu Server 20.04 LTS ](https://releases.ubuntu.com/20.04/ubuntu-20.04.3-live-server-amd64.iso)
 ---
 ### Install DockerHost Basic :
-#### dockerhost + portainer
-```sh
-bash <(curl -sSL https://git.io/JDM9J)
-```
-or :
+#### dockerhost + portainer (root-less)
 ```sh
 bash <(curl -sSL https://raw.githubusercontent.com/ariadata/ubuntu-sh/master/dockerhost-basic.sh)
+```
+---
+#### dockerhost + portainer (root)
+```sh
+bash <(curl -sSL https://raw.githubusercontent.com/ariadata/ubuntu-sh/master/dockerhost-basic-root.sh)
 ```
 ---
 ### Install DockerHost Normal :
