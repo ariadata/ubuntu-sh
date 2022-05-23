@@ -172,6 +172,7 @@ sudo curl -L "https://github.com/ariadata/ubuntu-sh/raw/master/files/mysql-custo
 ## 
 sudo apt --yes update && sudo apt -q --yes upgrade
 sudo apt --yes autoremove
+rm -f lemp-basic.sh
 clear
 
 ## reboot at the end
