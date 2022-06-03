@@ -52,7 +52,7 @@ sudo systemctl enable --now docker
 if [[ $if_install_portainer =~ ^([Yy])$ ]]
 then
 	docker pull portainer/portainer-ce:latest
-	docker run -d -p $portainer_external_port:9000 --name=portainer --restart=unless-stopped -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce
+	docker run -d -p $portainer_external_port:9000 --name=portainer --restart=unless-stopped -v /var/run/docker.sock:/var/run/docker.sock -v ~/portainer_data:/data portainer/portainer-ce
 fi
 
 ## snapd : https://tinyurl.com/y4r2bqh3
