@@ -14,10 +14,14 @@
 ```sh
 bash <(curl -sSL https://raw.githubusercontent.com/ariadata/ubuntu-sh/master/dockerhost-basic.sh)
 ```
----
 #### dockerhost + portainer (root)
 ```sh
 bash <(curl -sSL https://raw.githubusercontent.com/ariadata/ubuntu-sh/master/dockerhost-basic-root.sh)
+```
+### Install DockerHost Using docker.com script :
+```sh
+bash <(curl -sSL -fsSL https://get.docker.com)
+sudo apt install-y docker-compose
 ```
 ---
 ### Install DockerHost Normal :
