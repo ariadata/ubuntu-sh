@@ -21,7 +21,10 @@ bash <(curl -sSL https://raw.githubusercontent.com/ariadata/ubuntu-sh/master/doc
 ### Install DockerHost Using docker.com script :
 ```sh
 bash <(curl -sSL -fsSL https://get.docker.com)
-sudo apt install-y docker-compose
+sudo apt install -y docker-compose
+
+wget -nv -O - https://get.docker.com/ | sh
+sudo apt install -y docker-compose
 ```
 ---
 ### Install DockerHost Normal :
