@@ -20,11 +20,17 @@ bash <(curl -sSL https://raw.githubusercontent.com/ariadata/ubuntu-sh/master/doc
 ```
 ### Install DockerHost Using docker.com script :
 ```sh
+apt --yes install wget curl git nano lsb-release sqlite3 p7zip gnupg-agent apt-transport-https ca-certificates software-properties-common cron
+systemctl enable --now cron
 bash <(curl -sSL -fsSL https://get.docker.com)
+chmod 666 /var/run/docker.sock
+systemctl enable --now docker
 sudo apt install -y docker-compose
 
+#### Other Docker
 wget -nv -O - https://get.docker.com/ | sh
-sudo apt install -y docker-compose
+curl -L "https://github.com/docker/compose/releases/download/v2.6.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/bin/docker-compose
+chmod +x /usr/bin/docker-compose
 ```
 ---
 ### Install DockerHost Normal :
