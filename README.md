@@ -10,7 +10,7 @@
 > After Installing , use `sudo reboot` to restart your system
 
 ### Ubuntu Server 20.04 focal LTS Download Links:
-##### [Direct link of 20.04.3](http://old-releases.ubuntu.com/releases/focal/ubuntu-20.04.3-live-server-amd64.iso)
+##### [Direct link of 20.04.4](http://old-releases.ubuntu.com/releases/focal/ubuntu-20.04.4-live-server-amd64.iso)
 ##### [Latest focal page](https://releases.ubuntu.com/focal/)
 ---
 ### Install DockerHost Basic :
